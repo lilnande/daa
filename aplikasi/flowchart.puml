@@ -1,0 +1,41 @@
+@startuml pengelolaan_data_barang
+title Flowchart untuk Aplikasi Pengelolaan Data Barang
+
+start
+
+:Buka Aplikasi;
+
+:Masukkan Email dan Password;
+
+:Cek Kredensial;
+
+if (Kredensial Valid?) then (Ya)
+    if (Admin?) then (Ya)
+        :Login Sebagai Admin;
+        :Pilih Aksi;
+        if (Aksi = Tambah Barang) then (Tambah Barang)
+            :Masukkan Detail Barang;
+        elseif (Aksi = Edit Barang) then (Edit Barang)
+            :Pilih Barang yang Akan Diedit;
+        elseif (Aksi = Hapus Barang) then (Hapus Barang)
+            :Pilih Barang yang Akan Dihapus;
+        endif
+        :Logout;
+    else (Staff Gudang)
+        :Login Sebagai Staff Gudang;
+        :Pilih Aksi;
+        if (Aksi = Terima Barang) then (Terima Barang)
+            :Masukkan Detail Barang yang Diterima;
+        elseif (Aksi = Cek Stok) then (Cek Stok)
+            :Tampilkan Daftar Stok Barang;
+        endif
+        :Logout;
+    endif
+else (Tidak)
+    :Tampilkan "Kredensial Tidak Valid";
+    :Kembali ke Halaman Login;
+endif
+
+stop
+
+@enduml
